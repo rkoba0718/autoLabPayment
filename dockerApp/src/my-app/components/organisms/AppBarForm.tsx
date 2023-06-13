@@ -10,8 +10,10 @@ import {
 	Button
 } from "@material-ui/core";
 import Link from "next/link";
+import { useRecoilState } from "recoil";
 
 import { useUser } from "lib/userAuth";
+import { labState } from "lib/labAuth";
 import AccountMenu from "../molecules/AccountMenu";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -40,6 +42,7 @@ const AppBarForm: React.FunctionComponent<Props> = React.memo(
 	() => {
 		const classes = useStyles(useTheme());
 		const user = useUser();
+		const [lab, setLab] = useRecoilState(labState);
 		return (
 			<AppBar position="fixed" className={classes.bar}>
 				<Toolbar>
@@ -57,7 +60,7 @@ const AppBarForm: React.FunctionComponent<Props> = React.memo(
 						}
 					</Typography>
 					{
-						user !== null ? (
+						user !== null && lab !== null ? (
 							<AccountMenu />
 						): (<></>)
 					}

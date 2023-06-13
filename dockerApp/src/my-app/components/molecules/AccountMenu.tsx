@@ -34,10 +34,18 @@ const AccountMenu: React.FunctionComponent = () => {
 
 	//ユーザログアウト
 	const handleLogout = (): void => {
-		userLogout().catch((error) => {
+		labLogout(lab, setLab).then(() => {
+			setLab(null);
+			userLogout().then(() => {
+				router.reload();
+			}).catch((error) => {
+				setError(error.message);
+				setModalIsOpen(true);
+			});
+		}).catch((error) => {
 			setError(error.message);
 			setModalIsOpen(true);
-		});
+		})
 	};
 
 	const item = useMemo(
