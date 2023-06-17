@@ -4,10 +4,6 @@ autoLabPaymentは，研究室の商品購入履歴や残高を管理するため
 
 [autoLabPaymentを使用する](https://autolabpayment.vercel.app/login)
 
-## バグ修理中
-
-現在ログイン問題（issues1）を修理中です．
-
 ## ログイン
 
 Googleアカウントを使用してログインを行なってください．
